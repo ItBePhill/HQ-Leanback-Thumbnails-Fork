@@ -24,7 +24,7 @@ const hook = (target, prop, handler) => {
         set(target, prop, value) {
             if (prop === 'cssText' && !value.startsWith('background-image:url("data:')) {
                 //changed from hq720 to maxresdefault as some videos dont have 720 thumbnails
-                value = value.replace('hqdefault', ' maxresdefault')
+                value = value.replace('hqdefault', 'maxresdefault')
             }
 
             return Reflect.set(target, prop, value)
