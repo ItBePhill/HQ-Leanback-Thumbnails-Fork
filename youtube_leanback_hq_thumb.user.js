@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         YouTube Leanback HQ Thumbnail
-// @namespace    https://sudomaker.com/
-// @version      2025-04-30
+// @name         YouTube Leanback HQ Thumbnail Fork
+// @namespace    https://github.com/ItBePhill
+// @version      22-08-2025
 // @description  Replace YouTube TV's default thumbnails with really HQ ones
-// @author       ClassicOldSong
+// @author       ItBePhill
 // @match        https://www.youtube.com/tv
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        none
