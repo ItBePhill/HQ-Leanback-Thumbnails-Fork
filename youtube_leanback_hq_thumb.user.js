@@ -23,7 +23,7 @@ const hook = (target, prop, handler) => {
     const proxyHandler = {
         set(target, prop, value) {
             if (prop === 'cssText' && !value.startsWith('background-image:url("data:')) {
-                value = value.replace('hqdefault', 'hq720')
+                value = value.replace('hqdefault', ' maxresdefault')
             }
 
             return Reflect.set(target, prop, value)
