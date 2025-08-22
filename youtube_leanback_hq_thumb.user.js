@@ -31,20 +31,20 @@ function urlExists(url, callback) {
     const proxyHandler = {
         set(target, prop, value) {
             if (prop === 'cssText' && !value.startsWith('background-image:url("data:')) {
+                let url = value.replace('hqdefault', 'hq720');
                 urlExists(url, function(exists) {
-                      if (exists) {
-                        value = value.replace('hqdefault', 'maxresdefault')
-                          return Reflect.set(target, prop, value)
-                      }
-                    });
+                if (exists) {
+                    value = url;
+                } else {
+                    value = value;
                 }
+                });
             }
-
-            
+            return Reflect.set(target, prop, value)
         }
     }
 
-    hook(HTMLElement.prototype, 'style', ({get, set}) => {
+hook(HTMLElement.prototype, 'style', ({get, set}) => {
         return {
             get() {
                 const _style = get.call(this)
