@@ -34,13 +34,13 @@ function urlExists(url, callback) {
                 urlExists(url, function(exists) {
                       if (exists) {
                         value = value.replace('hqdefault', 'maxresdefault')
-                      } else {
-                       value = value.replace('hqdefault', 'sddefault')
+                          return Reflect.set(target, prop, value)
                       }
                     });
+                }
             }
 
-            return Reflect.set(target, prop, value)
+            
         }
     }
 
