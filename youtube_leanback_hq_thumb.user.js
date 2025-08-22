@@ -15,6 +15,7 @@ const hook = (target, prop, handler) => {
     Object.defineProperty(target, prop, newDescriptor)
 }
 
+
 (function() {
     'use strict';
 
@@ -23,8 +24,15 @@ const hook = (target, prop, handler) => {
     const proxyHandler = {
         set(target, prop, value) {
             if (prop === 'cssText' && !value.startsWith('background-image:url("data:')) {
-                //changed from hq720 to maxresdefault as some videos dont have 720 thumbnails
-                value = value.replace('hqdefault', 'maxresdefault')
+                var url = value.replace('hqdefault', 'maxresdefault')
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                if (http.status != 404)
+                    value = value.replace('hqdefault', 'maxresdefault')
+                else{
+                    value = value.replace('hqdefault', 'sddefault')
+                }
             }
 
             return Reflect.set(target, prop, value)
