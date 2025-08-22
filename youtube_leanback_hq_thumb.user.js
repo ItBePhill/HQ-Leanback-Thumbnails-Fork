@@ -23,6 +23,7 @@ const hook = (target, prop, handler) => {
     const proxyHandler = {
         set(target, prop, value) {
             if (prop === 'cssText' && !value.startsWith('background-image:url("data:')) {
+                //changed from hq720 to maxresdefault as some videos dont have 720 thumbnails
                 value = value.replace('hqdefault', ' maxresdefault')
             }
 
